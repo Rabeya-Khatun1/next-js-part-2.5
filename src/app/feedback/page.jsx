@@ -11,7 +11,7 @@ const getFeedback = async()=>{
         cache:"force-cache",
         next:{revalidate:60}
     })
-return await res.json();
+
 
 }
 
