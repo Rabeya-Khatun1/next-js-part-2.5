@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import React from "react";
 
 
@@ -33,10 +34,10 @@ const {id} = await params;
   }
 }
 
-export const metadata={
-  title: "Food Details Yatun Khaijan",
-  description: "Best Fastfood in Noakhali"
-}
+// export const metadata={
+//   title: "Food Details Yatun Khaijan",
+//   description: "Best Fastfood in Noakhali"
+// }
 
 const getSingleFoods = async (id) => {
   const res = await fetch(
@@ -56,13 +57,14 @@ const ViewDetails = async ({ params }) => {
 
   const food = await getSingleFoods(id);
 console.log(food)
-  if (!food) {
+  if (!food.title) {
     return (
-      <div className="text-center mt-20">
-        <h2 className="text-xl font-semibold text-red-500">
-          Food not found 😔
-        </h2>
-      </div>
+      redirect('/foods')
+      // <div className="text-center mt-20">
+      //   <h2 className="text-xl font-semibold text-red-500">
+      //     Food not found 😔
+      //   </h2>
+      // </div>
     );
   }
 

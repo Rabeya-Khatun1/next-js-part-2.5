@@ -15,9 +15,6 @@ export const feedback = [
 
 export async function GET(request){
 
-
-
-
     return Response.json({
         status:200,
         message: "Yahoo. API  Created"

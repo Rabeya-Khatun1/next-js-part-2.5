@@ -24,8 +24,9 @@ if(!message || typeof message !== 'string'){
 }
 
 const newFeedback = {message, date:new Date().toISOString()}
-revalidatePath('/feedback');
+
 const result =await feedbackCollection.insertOne(newFeedback)
+revalidatePath('/feedback');
 
     return Response.json(result)
 }

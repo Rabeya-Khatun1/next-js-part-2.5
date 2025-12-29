@@ -7,18 +7,24 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'www.themealdb.com',
-        // port: '',
         pathname: '/images/media/**',
-        search: '',
       },
       {
         protocol: 'https',
-        hostname: 'randomuser.me', // নতুন ডোমেইন যোগ করা হলো
+        hostname: 'randomuser.me', 
         pathname: '/api/portraits/**',
       },
     ],
   },
-
+async redirects(){
+  return [
+    {
+      source: '/food-details/:id',
+      destination: '/foods/:id',
+      permanent: true,
+    }
+  ]
+}
 
 };
 

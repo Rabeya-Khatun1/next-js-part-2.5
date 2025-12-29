@@ -1,23 +1,28 @@
 import FeedbackCard from '@/components/cards/FeedbackCard';
 import Link from 'next/link';
 import React from 'react';
+import { connect } from '../lib/dbConnect';
+import { getFeedback } from '@/action/server/feedback';
 
 export const metadata = {
     title: "feedback",
 }
 
-const getFeedback = async()=>{
-    const res = await fetch("http://localhost:3000/api/feedback",{
-        cache:"force-cache",
-        next:{revalidate:60}
-    })
-return await res.json();
+export const dynamic = 'force-dynamic'
 
-}
+// const getFeedback = async()=>{
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_server}/api/feedback`,{
+//         // cache:"force-cache",
+//         next:{revalidate:60}
+//     })
+// return await res.json();
+
+// }
 
 const FeedBack = async () => {
 
 const feedback = await getFeedback();
+
 
     return (
        <div>
